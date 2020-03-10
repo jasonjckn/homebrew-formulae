@@ -1,7 +1,7 @@
 class RRequirement < Requirement
   fatal true
 
-  satisfy(:build_env => false) { which("native-image") }
+  satisfy(:build_env => false) { which("native-image2") }
 
   def message; <<~EOS
     GraalVM + native-image is required; install it via one of:
