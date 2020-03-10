@@ -2,7 +2,7 @@ class RRequirement < Requirement
   fatal true
 
   satisfy(:build_env => false) {
-    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\" '{ print $3; }' | head -n 1 | xargs")
+    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\\\" '{ print $3; }' | head -n 1 | xargs")
     which(Pathname.new(ENV["GRAALVM_HOME"])/"bin/native-image")
 
   }
@@ -21,11 +21,10 @@ class J2edn < Formula
 
   uses_from_macos "ruby" => :build
   depends_on "clojure/tools/clojure" => :build
-  #depends_on RRequirement
+  depends_on RRequirement
 
   def install
     ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\\\" '{ print $3; }' | head -n 1 | xargs")
-    print "$$$$$$$$"
     print ENV["GRAALVM_HOME"]
     system "clojure", "-A:native-image"
     system "mkdir", prefix/"bin"
