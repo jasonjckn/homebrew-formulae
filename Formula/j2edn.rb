@@ -1,3 +1,15 @@
+class RRequirement < Requirement
+  fatal true
+
+  satisfy(:build_env => false) { which("gu") }
+
+  def message; <<~EOS
+    GraalVM is required; install it via one of:
+      brew cask install graalvm/tap/graalvm-ce-java11
+    EOS
+  end
+end
+
 class J2edn < Formula
   desc "The Clojure Programming Language"
   homepage "https://clojure.org"
