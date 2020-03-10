@@ -1,4 +1,4 @@
-class Testa < Formula
+class J2edn < Formula
   desc "The Clojure Programming Language"
   homepage "https://clojure.org"
   head "https://github.com/jasonjckn/j2edn.git"
