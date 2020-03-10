@@ -5,18 +5,17 @@ class Testa < Formula
 
   bottle :unneeded
 
-  depends_on "rlwrap"
-  depends_on "clojure/tools/clojure"
-  #depends_on cask: "graalvm/tap/graalvm-ce-java11"
-
-  uses_from_macos "ruby" => :build
-
-  def install
-    system "echo hi", prefix
-    system "echo $PWD", prefix
+  head do 
+    uses_from_macos "ruby" => :build
+    depends_on "rlwrap"
+    depends_on "clojure/tools/clojure" => :build
+    #depends_on cask: "graalvm/tap/graalvm-ce-java11"
+    system "echo hi"
     system "echo $PWD"
-    system "ls *"
+
   end
+
+
 
   test do
     ENV["TERM"] = "xterm"
