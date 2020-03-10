@@ -19,6 +19,7 @@ class J2edn < Formula
     #system "gu", "install", "native-image"
     system "clojure", "-A:native-image"
     system "cp", "core", prefix/"j2edn"
+    bin.install_symlink libexec/"j2edn"
   end
 
 
