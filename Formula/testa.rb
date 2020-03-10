@@ -5,14 +5,15 @@ class Testa < Formula
 
   bottle :unneeded
 
-  head do 
-    uses_from_macos "ruby" => :build
-    depends_on "rlwrap"
-    depends_on "clojure/tools/clojure" => :build
-    #depends_on cask: "graalvm/tap/graalvm-ce-java11"
-    system "echo hi"
-    system "echo $PWD"
+  uses_from_macos "ruby" => :build
+  depends_on "rlwrap"
+  depends_on "clojure/tools/clojure" => :build
+  #depends_on cask: "graalvm/tap/graalvm-ce-java11"
 
+
+  def install
+    system "echo", prefix, "$PWD"
+    system "clojure", "-A:native-image"
   end
 
 
