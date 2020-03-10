@@ -20,7 +20,7 @@ class J2edn < Formula
   def install
     ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     ENV.prepend_path "PATH", Pathname.new(ENV["GRAALVM_HOME"])/"bin/"
-    system "gu", "install", "native-image"
+    system "sudo", "-u", @whoami, "gu", "install", "native-image"
     system "clojure", "-A:native-image"
     system "mkdir", prefix/"bin"
     system "cp", "core", prefix/"bin/j2edn"
