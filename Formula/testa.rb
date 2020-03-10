@@ -16,8 +16,9 @@ class Testa < Formula
     ENV["JAVA_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     ENV.prepend_path "PATH", Pathname.new(ENV["GRAALVM_HOME"])/"bin/"
-    system "gu", "install", "native-image"
+    #system "gu", "install", "native-image"
     system "clojure", "-A:native-image"
+    system "cp", "core", prefix/"j2edn"
   end
 
 
