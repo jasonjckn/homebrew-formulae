@@ -2,7 +2,7 @@ class RRequirement < Requirement
   fatal true
 
   satisfy(:build_env => false) {
-    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\\\" '{ print $3; }' | head -n 1 | xargs")
+    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\\\" '{ print $3; }' | head -n 1 | xargs echo")
     native_image = Pathname.new(ENV["GRAALVM_HOME"])/"bin/native-image"
     print "native, ", native_image
     which(Pathname.new(ENV["GRAALVM_HOME"])/"bin/native-image")
