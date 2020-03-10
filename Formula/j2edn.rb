@@ -17,6 +17,7 @@ class J2edn < Formula
 
   uses_from_macos "ruby" => :build
   depends_on "clojure/tools/clojure" => :build
+  depends_on RRequirement
 
   def install
     ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
