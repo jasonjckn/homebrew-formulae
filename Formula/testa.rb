@@ -14,6 +14,7 @@ class Testa < Formula
   def install
 
     ENV["JAVA_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
+    ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     system "clojure", "-A:native-image"
   end
 
