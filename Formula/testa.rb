@@ -13,7 +13,9 @@ class Testa < Formula
 
   def install
     system "echo hi", prefix
-    system "ls .", prefix
+    system "echo $PWD", prefix
+    system "echo $PWD"
+    system "ls *"
   end
 
   test do
