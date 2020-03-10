@@ -30,6 +30,6 @@ class J2edn < Formula
   end
 
   test do
-    assert_equal "{:a 3}", shell_output("echo '{\"a\":3}' | #{bin}/j2edn").strip
+    assert_equal "{:a 4}", shell_output("echo '{\"a\":3}' | #{bin}/j2edn").strip
   end
 end
