@@ -11,17 +11,11 @@ class RRequirement < Requirement
 end
 
 class J2edn < Formula
-  desc "The Clojure Programming Language"
-  homepage "https://clojure.org"
   head "https://github.com/jasonjckn/j2edn.git"
-
   bottle :unneeded
 
   uses_from_macos "ruby" => :build
-  depends_on "rlwrap"
   depends_on "clojure/tools/clojure" => :build
-  #depends_on cask: "graalvm/tap/graalvm-ce-java11"
-
 
   def install
 
