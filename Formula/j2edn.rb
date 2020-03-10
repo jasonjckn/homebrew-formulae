@@ -3,8 +3,7 @@ class RRequirement < Requirement
 
   satisfy(:build_env => false) {
     ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
-    ENV.prepend_path "PATH", Pathname.new(ENV["GRAALVM_HOME"])/"bin/"
-    which("native-image")
+    which(Pathname.new(ENV["GRAALVM_HOME"])/"bin/native-image")
   }
 
   def message; <<~EOS
