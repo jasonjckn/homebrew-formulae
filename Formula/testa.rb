@@ -1,7 +1,7 @@
 class Testa < Formula
   desc "The Clojure Programming Language"
   homepage "https://clojure.org"
-  head "https://github.com/taylorwood/clojurl.git"
+  head "https://github.com/jasonjckn/j2edn.git"
 
   bottle :unneeded
 
