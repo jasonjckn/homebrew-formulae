@@ -12,8 +12,8 @@ class Testa < Formula
 
 
   def install
-    system "java", "-version"
-    system "echo", prefix, "$PWD"
+
+    ENV["JAVA_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     system "clojure", "-A:native-image"
   end
 
