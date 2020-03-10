@@ -1,11 +1,12 @@
 class RRequirement < Requirement
   fatal true
 
-  satisfy(:build_env => false) { which("gu") }
+  satisfy(:build_env => false) { which("native-image") }
 
   def message; <<~EOS
-    GraalVM is required; install it via one of:
+    GraalVM + native-image is required; install it via one of:
       brew cask install graalvm/tap/graalvm-ce-java11
+      $GRAALVM_HOME/bin/gu install native-image
     EOS
   end
 end
