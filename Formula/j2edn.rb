@@ -2,7 +2,12 @@ class RRequirement < Requirement
   fatal true
 
   satisfy(:build_env => false) {
-    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\\\" '{ print $3; }' | head -n 1 | xargs echo -n")
+    ENV["GRAALVM_HOME"] =  Utils.popen_read(
+      "/usr/libexec/java_home -V 2>&1
+         | grep GraalVM
+         | awk -F\\\" '{ print $3; }'
+         | head -n 1
+         | xargs echo -n")
     which(Pathname.new(ENV["GRAALVM_HOME"])/"bin/native-image")
 
   }
@@ -29,7 +34,4 @@ class J2edn < Formula
     system "cp", "core", prefix/"bin/j2edn"
   end
 
-  test do
-    assert_equal "{:a 4}", shell_output("echo '{\"a\":3}' | #{bin}/j2edn").strip
-  end
 end
