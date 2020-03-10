@@ -7,7 +7,7 @@ class Testa < Formula
 
   depends_on "rlwrap"
   depends_on "clojure/tools/clojure"
-  depends_on cask: "graalvm/tap/graalvm-ce-java11"
+  #depends_on cask: "graalvm/tap/graalvm-ce-java11"
 
   uses_from_macos "ruby" => :build
 
