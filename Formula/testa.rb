@@ -12,6 +12,7 @@ class Testa < Formula
 
 
   def install
+    system "java", "-version"
     system "echo", prefix, "$PWD"
     system "clojure", "-A:native-image"
   end
