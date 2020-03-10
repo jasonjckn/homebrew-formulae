@@ -18,8 +18,8 @@ class J2edn < Formula
     ENV.prepend_path "PATH", Pathname.new(ENV["GRAALVM_HOME"])/"bin/"
     #system "gu", "install", "native-image"
     system "clojure", "-A:native-image"
-    system "cp", "core", prefix/"j2edn"
-    bin.install_symlink libexec/"j2edn"
+    system "mkdir", prefix/"bin"
+    system "cp", "core", prefix/"bin/j2edn"
   end
 
 
