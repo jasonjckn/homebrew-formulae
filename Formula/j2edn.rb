@@ -18,17 +18,13 @@ class J2edn < Formula
   depends_on "clojure/tools/clojure" => :build
 
   def install
-
-    ENV["JAVA_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
     ENV.prepend_path "PATH", Pathname.new(ENV["GRAALVM_HOME"])/"bin/"
-    #system "gu", "install", "native-image"
+    system "gu", "install", "native-image"
     system "clojure", "-A:native-image"
     system "mkdir", prefix/"bin"
     system "cp", "core", prefix/"bin/j2edn"
   end
-
-
 
   test do
     ENV["TERM"] = "xterm"
