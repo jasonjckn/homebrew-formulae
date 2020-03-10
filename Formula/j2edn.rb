@@ -24,7 +24,7 @@ class J2edn < Formula
   #depends_on RRequirement
 
   def install
-    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\" '{ print $3; }' | head -n 1 | xargs")
+    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V")
     print "$$$$$$$$"
     print ENV["GRAALVM_HOME"]
     system "clojure", "-A:native-image"
