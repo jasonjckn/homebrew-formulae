@@ -2,8 +2,9 @@ class RRequirement < Requirement
   fatal true
 
   satisfy(:build_env => false) {
-    ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
+    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\" '{ print $3; }' | head -n 1 | xargs")
     which(Pathname.new(ENV["GRAALVM_HOME"])/"bin/native-image")
+
   }
 
   def message; <<~EOS
@@ -23,10 +24,7 @@ class J2edn < Formula
   depends_on RRequirement
 
   def install
-    ENV["GRAALVM_HOME"] =  "/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.0.0/Contents/Home"
-    ENV.prepend_path "PATH", Pathname.new(ENV["GRAALVM_HOME"])/"bin/"
-
-    #system "sudo", "-u", "jason", "gu", "install", "-f", "native-image"
+    ENV["GRAALVM_HOME"] =  Utils.popen_read("/usr/libexec/java_home -V 2>&1 | grep GraalVM | awk -F\" '{ print $3; }' | head -n 1 | xargs")
     system "clojure", "-A:native-image"
     system "mkdir", prefix/"bin"
     system "cp", "core", prefix/"bin/j2edn"
