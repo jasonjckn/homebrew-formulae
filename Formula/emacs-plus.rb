@@ -56,6 +56,8 @@ class EmacsPlus < Formula
          "Build with jansson support (--HEAD only)"
   option "with-emacs-27-branch",
          "Build from emacs-27-branch (--HEAD only)"
+  option "with-native-comp-branch",
+         "Build from native comp"
 
   # Update list from
   # https://raw.githubusercontent.com/emacsfodder/emacs-icons-project/master/icons.json
