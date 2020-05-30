@@ -63,7 +63,7 @@ class Gcc < Formula
     # Everything but Ada, which requires a pre-existing GCC Ada compiler
     # (gnat) to bootstrap. GCC 4.6.0 adds go as a language option, but it is
     # currently only compilable on Linux.
-    languages = %w[c c++ objc obj-c++ fortran]
+    languages = %w[c c++ objc obj-c++ fortran jit]
 
     pkgversion = "Homebrew GCC #{pkg_version} #{build.used_options*" "}".strip
 
@@ -87,11 +87,13 @@ class Gcc < Formula
         "--with-isl=#{Formula["isl"].opt_prefix}",
         "--with-system-zlib",
         "--with-bugurl=https://github.com/Homebrew/homebrew/issues",
+        "--enable-host-shared",
       ]
     else
       args += [
         "--with-isl=#{Formula["isl@0.18"].opt_prefix}",
         "--with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues",
+        "--enable-host-shared",
       ]
 
       # Change the default directory name for 64-bit libraries to `lib`
