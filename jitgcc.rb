@@ -1,6 +1,6 @@
 require "os/linux/glibc"
 
-class Gcc < Formula
+class Jitgcc < Formula
   desc "GNU compiler collection"
   homepage "https://gcc.gnu.org/"
   revision OS.mac? ? 1 : 7
