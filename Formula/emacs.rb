@@ -170,7 +170,7 @@ class Emacs < Formula
     args << "--with-gnutls"
 
 
-    ENV.append "CFLAGS", "-O3 -pipe -march=skylake -fomit-frame-pointer -msse  -msse2  -msse3  -mmmx  -m3dnow"
+    ENV.append "CFLAGS", "-O2 -pipe -march=skylake -fomit-frame-pointer -msse  -msse2  -msse3  -mmmx  -m3dnow"
 
     if build.with? "debug"
       ENV.append "CFLAGS", "-g -Og"
